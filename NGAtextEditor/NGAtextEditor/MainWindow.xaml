@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NGAtextEditor"
         mc:Ignorable="d"
-        Title="NGA代码编辑器" Height="700" Width="960" WindowStartupLocation="CenterOwner" MinHeight="600" MinWidth="600" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        Title="NGA代码编辑器" Height="700" Width="960" WindowStartupLocation="CenterOwner" MinHeight="600" MinWidth="600" ScrollViewer.VerticalScrollBarVisibility="Disabled" Background="#FFF5E8CB">
     <Grid x:Name="UserMainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="110"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="180"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="bbsbtnGrid" Margin="0">
+        <Grid x:Name="bbsbtnGrid" Margin="0" Background="#FFFFFCEE">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
+            <Grid x:Name="bbsdarkGrid" Grid.Row="1" Background="#FFFFF0CD"/>
         </Grid>
-        <TextBox x:Name="MainText" HorizontalAlignment="Stretch" Margin="10" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Panel.ZIndex="3" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" UndoLimit="11" BorderThickness="2" UseLayoutRounding="False" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True" TextOptions.TextFormattingMode="Display" MaxLines="70000" Height="Auto" Width="Auto" FontSize="14"/>
+        <TextBox x:Name="MainText" HorizontalAlignment="Stretch" Margin="10" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Panel.ZIndex="3" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" UndoLimit="11" BorderThickness="2" UseLayoutRounding="False" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True" TextOptions.TextFormattingMode="Display" MaxLines="70000" Height="Auto" Width="Auto" FontSize="14" Background="#FFFFFCEE" SelectionBrush="#FF591804" BorderBrush="#FFE0C19E"/>
         <Grid x:Name="OtherbtnGrid" Margin="0" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
@@ -26,9 +28,23 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <GroupBox x:Name="GroupAbout" Header="关于" Margin="5"/>
-            <GroupBox x:Name="GroupTree" Header="文章大纲" Margin="5" Grid.Column="2"/>
-            <GroupBox x:Name="GroupRun" Header="运行" Margin="5" Grid.Column="3"/>
+            <GroupBox x:Name="GroupAbout" Header="关于" Margin="5" BorderBrush="#FFE0C19E"/>
+            <GroupBox x:Name="GroupOut" Header="错误与警告" Margin="10" Grid.Column="1" BorderBrush="#FFE0C19E">
+                <ListView x:Name="listView" Margin="3" VerticalContentAlignment="Top" Background="#FFFFFCEE" Foreground="Black" BorderBrush="#FFE0C19E">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="行" Width="30"/>
+                            <GridViewColumn Header="说明"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </GroupBox>
+            <GroupBox x:Name="GroupTree" Header="文章大纲" Margin="5" Grid.Column="2" BorderBrush="#FFE0C19E">
+                <TreeView x:Name="Outline" Margin="3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#FFFFFCEE" BorderBrush="#FFE0C19E"/>
+            </GroupBox>
+            <GroupBox x:Name="GroupRun" Header="运行" Margin="5" Grid.Column="3" BorderBrush="#FFE0C19E">
+                <Button x:Name="btnRun" Content="语法检查" Margin="3" Height="50" VerticalAlignment="Bottom" FontSize="16" Style="{DynamicResource ButtonNGA}" Foreground="White"/>
+            </GroupBox>
         </Grid>
     </Grid>
 </Window>

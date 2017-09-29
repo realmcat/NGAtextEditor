@@ -23,6 +23,15 @@ namespace NGAtextEditor
         public MainWindow()
         {
             InitializeComponent();
+            TreeViewItem treeViewItem1 = new TreeViewItem();
+            treeViewItem1.Header = "第一级";
+            Outline.Items.Add(treeViewItem1);
+            TreeViewItem treeViewItem2 = new TreeViewItem();
+            treeViewItem2.Header = "第二级";
+            treeViewItem1.Items.Add(treeViewItem2);
+            TreeViewItem treeViewItem3 = new TreeViewItem();
+            treeViewItem3.Header = "第三级";
+            treeViewItem2.Items.Add(treeViewItem3);
         }
     }
 }
